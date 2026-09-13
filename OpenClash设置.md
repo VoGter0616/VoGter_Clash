@@ -48,7 +48,7 @@
 - 实验性：绕过指定区域 IP：**绕过中国大陆**
 - 其他默认
 
-**绕过指定区域 IPv4 黑名单里添加：**
+**绕过指定区域 IPv4 黑名单里覆盖添加：**
 
     services.googleapis.cn
     googleapis.cn
@@ -143,7 +143,7 @@
 - Fake-IP 持久化 ✅
 - Fallback-Filter ✅
 
-**Fallback-Filter 配置：**
+**Fallback-Filter 配置（覆盖原有配置）：**
 
     fallback-filter:
       geoip: true
@@ -440,7 +440,7 @@
 - Fake-IP-Filter ✅
 - Fake-IP-Filter-Mode：**黑名单模式**
 
-**Fake-IP-Filter 配置：**
+**Fake-IP-Filter 配置（覆盖原有配置）：**
 
     *.somethingstranges.com
     *.lan
@@ -693,7 +693,7 @@
 - 探测（嗅探）纯 IP 连接 ✅
 - 自定义流量探测（嗅探）设置 ✅
 
-**嗅探配置：**
+**嗅探配置（覆盖原有配置）：**
 
     # 嗅探域名 可选配置
     sniffer:
