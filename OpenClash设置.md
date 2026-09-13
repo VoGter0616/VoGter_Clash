@@ -18,6 +18,16 @@
 
     ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "[' DoH1',' DoH2']"
 
+### 1.2 示例
+
+    openclash_custom_overwrite.sh
+    CONFIG_FILE="$1"
+
+    ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "['https://ns1.pubdns.co/iplc_dns_query/2688_VJGxKqIpfs','https://abc.xxx.com/dns2_query']"
+    exit 0
+
+---
+
 ---
 
 ## 二、插件设置
