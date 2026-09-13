@@ -26,9 +26,9 @@
 ### 1.1 运行状态 —— 覆写模块（OpenClash v0.47.081 以上版本）
 
 > [!TIP]
-> 在 `openclash_custom_overwrite.sh` 文件内的 `exit 0` 上方、`CONFIG_FILE="$1"` 的下方粘贴并修改成所需机场节点域名解析 DNS。没有或者不知道专属 DNS，无视此条设置。
+> 在 `openclash_custom_overwrite.sh` 文件内的 `exit 0` 上方、`CONFIG_FILE="$1"` 的下方粘贴并修改成所需机场节点域名解析 DNS（用来解析AnyTLS协议节点。没有或者不知道专属 DNS，无视此条设置。
 
-    ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "['节点域名解析DNS1','节点域名解析DNS2']"
+    ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "[' DoH1',' DoH2']"
 
 ---
 
