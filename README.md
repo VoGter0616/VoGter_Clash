@@ -35,7 +35,7 @@
 > 本文档面向 OpenWrt / iStoreOS / ImmortalWrt 上的 OpenClash，涵盖覆写模块、模式设置、DNS、GEO 数据库、覆写设置、规则设置与订阅配置。
 > 首次使用建议按“首页 → 插件设置 → 覆写设置 → 规则设置 → 配置订阅”的顺序阅读。
 
-> [!WARRING]
+> [!WARNING]
 > Clash订阅转换服务地址的公共后端暂不支持AnyTLS等新协议节点的转换
 
 > 如使用自定义规则模板需要转换订阅服务需自行部署asdlokj1qpi23/subconverter后端进行转换使用
