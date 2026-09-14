@@ -1,12 +1,12 @@
 # Custom_Proxy_List
-# UPDATED: 2026-09-13 17:23:22 (UTC+8)
+# UPDATED: 2026-09-14 17:45:46 (UTC+8)
 # DOMAIN: 10
 # DOMAIN-KEYWORD: 26
-# DOMAIN-SUFFIX: 6794
+# DOMAIN-SUFFIX: 6795
 # IP-CIDR: 93
 # IP-CIDR6: 4
-# NEWLY ADDED: 0
-# TOTAL: 6927
+# NEWLY ADDED: 1
+# TOTAL: 6928
 
 DOMAIN,api.waqi.info
 DOMAIN,aqi.aqicn.org
@@ -4656,6 +4656,7 @@ DOMAIN-SUFFIX,qq.co.za
 DOMAIN-SUFFIX,qstatus.com
 DOMAIN-SUFFIX,qtrac.eu
 DOMAIN-SUFFIX,qtweeter.com
+DOMAIN-SUFFIX,quakemachinex.com
 DOMAIN-SUFFIX,quannengshen.org
 DOMAIN-SUFFIX,quantumbooter.net
 DOMAIN-SUFFIX,quay.io
