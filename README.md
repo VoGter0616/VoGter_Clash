@@ -717,7 +717,6 @@
 | nameserver | 223.5.5.5 | UDP | 启用 | |
 | nameserver | 119.29.29.29 | UDP | 启用 | |
 | nameserver | dhcp://system | UDP | 启用 | 旁路由模式下将其改成主路由网关，默认关闭 |
-| nameserver | dns.alidns.com/dns-query | HTTPS | 启用 |  |
 | fallback | dns.google/dns-query | HTTPS | 启用 |  |
 | fallback | cloudflare-dns.com/dns-query | HTTPS | 启用 |  |
 | default-nameserver | 223.5.5.5 | UDP | 启用 | |
