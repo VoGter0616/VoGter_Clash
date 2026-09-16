@@ -141,7 +141,7 @@
 
 ### 3.1 常规设置
 
-- Github 地址修改：`https://testingcf.jsdelivr.net/`（代理通后将此选项改为**禁用**）
+- Github 地址修改：`https://testingcf.jsdelivr.net/`
 - 其他默认
 
 ### 3.2 DNS 设置
