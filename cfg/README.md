@@ -35,6 +35,8 @@
 > 在 `openclash_custom_overwrite.sh` 文件内的 `exit 0` 上方、`CONFIG_FILE="$1"` 的下方粘贴并修改成所需机场节点域名解析 DNS（用来解析AnyTLS协议节点）。没有或者不知道专属 DNS，无视此条设置。
 
     ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "[' DoH1',' DoH2']"
+    ruby_edit "$CONFIG_FILE" "['dns']['prefer-h3']" "true"
+    ruby_edit "$CONFIG_FILE" "['dns']['ipv6-timeout']" "300"
 
 ### 1.2 示例
 
@@ -697,11 +699,13 @@
 | nameserver | 223.5.5.5 | UDP | 启用 | |
 | nameserver | 119.29.29.29 | UDP | 启用 | |
 | nameserver | dhcp://system | UDP | 启用 | 旁路由模式下将其改成主路由网关，默认关闭 |
-| fallback | 1.1.1.1/dns-query#PROXY | HTTPS | 启用 | PROXY 为策略节点组配置里的策略组 |
-| fallback | dns.google/dns-query#PROXY | HTTPS | 启用 | PROXY 为策略节点组配置里的策略组 |
+| nameserver | dns.alidns.com/dns-query | HTTPS | 启用 |  |
+| fallback | dns.google/dns-query | HTTPS | 启用 |  |
+| fallback | cloudflare-dns.com/dns-query | HTTPS | 启用 |  |
 | default-nameserver | 223.5.5.5 | UDP | 启用 | |
 | default-nameserver | 119.29.29.29 | UDP | 启用 | |
 | default-nameserver | 2400:3200::1 | UDP | 启用 | 使用 IPv6 DNS 解析时开启 |
+| default-nameserver | 8.8.8.8 | UDP | 启用 | 使用 IPv6 DNS 解析时开启 |
 
 ### 3.3 Meta 设置
 
