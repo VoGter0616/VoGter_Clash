@@ -135,7 +135,6 @@
 - 自动更新 GeoIP Dat 数据库 ✅
 
       https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
-
 - 自动更新 GeoSite 数据库 ✅
 
       https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
