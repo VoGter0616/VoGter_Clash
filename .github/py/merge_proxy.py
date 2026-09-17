@@ -4,7 +4,7 @@ import requests
 
 # Proxy 规则源列表
 proxy_urls = [
-    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Proxy/Proxy.list",
+    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy.list",
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/refs/heads/main/rule/Clash/Proxy.list",
 ]
 
