@@ -694,7 +694,7 @@
 | default-nameserver | 223.5.5.5 | UDP | 启用 | |
 | default-nameserver | 119.29.29.29 | UDP | 启用 | |
 | default-nameserver | 2400:3200::1 | UDP | 启用 | 使用 IPv6 DNS 解析时开启 |
-| default-nameserver | 8.8.8.8 | UDP | 启用 | 使用 IPv6 DNS 解析时开启 |
+| default-nameserver | 8.8.8.8 | UDP | 启用 |  |
 
 ### 3.3 Meta 设置
 
