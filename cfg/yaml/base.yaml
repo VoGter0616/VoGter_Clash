@@ -1,98 +1,422 @@
-port: 7890
-socks-port: 7891
+mixed-port: 7890
 redir-port: 7892
-mixed-port: 7893
-allow-lan: false
-mode: Rule
-log-level: info
-ipv6: false
-external-controller: 127.0.0.1:9090
-clash-for-android:
-  append-system-dns: false
-hosts:
-  mtalk.google.com: 108.177.125.188
+tproxy-port: 7895
+allow-lan: true
+bind-address: "*"
+mode: rule
+log-level: warning
+ipv6: true
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+keep-alive-interval: 15
+keep-alive-idle: 30
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+
+sniffer:
+  enable: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+  skip-domain:
+    - "Mijia Cloud"
+    - "dlg.io.mi.com"
+    - "+.push.apple.com"
+    - "+.googlevideo.com"
+
+tun:
+  enable: true
+  stack: mixed
+  mtu: 1492
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+
+proxies:
+  - name: "VLESS-Reality-XHTTP-Speed"
+    type: vless
+    server: 123.12.15.123
+    port: 443
+    udp: true
+    uuid: 103dcbce-2234-4902-9ecf-880e6da1ce56
+    packet-encoding: xudp
+    encryption: none
+    network: xhttp
+    tls: true
+    alpn:
+      - h2
+    servername: www.microsoft.com
+    client-fingerprint: chrome
+    skip-cert-verify: false
+    reality-opts:
+      public-key: sthbVvv4NTa0i8-bsMXEyTr7E-FZTdq-NQWzwhbTiXw
+      short-id: 064d
+    xhttp-opts:
+      path: "/"
+      host: www.microsoft.com
+      mode: auto
+      reuse-settings:
+        max-concurrency: "16-32"
+        c-max-reuse-times: "0"
+        h-max-reusable-secs: "1800-3000"
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - VLESS-Reality-XHTTP-Speed
+      - DIRECT
+
 dns:
   enable: true
-  listen: 127.0.0.1:53
+  listen: 0.0.0.0:1053
+  cache-algorithm: arc
+  ipv6: true
+  prefer-h3: false
+  use-hosts: true
+  use-system-hosts: true
+  respect-rules: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-range6: fdfe:dcba:9876::1/64
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "+.localdomain"
+    - "localhost.ptlogin2.qq.com"
+    - "time.windows.com"
+    - "time.apple.com"
+    - "time.android.com"
+    - "+.googleapis.cn"
+    - "+.xn--ngstr-lra8j.com"
+    - "+.goofish.com"
+    - "+.idlefish.com"
+    - "+.taobao.com"
+    - "+.tmall.com"
+    - "+.alipay.com"
+    - "+.alicdn.com"
+    - "+.taobaocdn.com"
+    - "+.tbcdn.cn"
+    - "+.alipayobjects.com"
+    - "+.alibabausercontent.com"
+    - "+.aliapp.org"
+    - "+.mmstat.com"
+    - "+.amap.com"
+    - "+.ucweb.com"
+    - "+.uc.cn"
+    - "+.ntp.org.cn"
+    - "+.pool.ntp.org"
+
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
-    - 1.0.0.1
-  ipv6: false
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.10.0.1/16
-  fake-ip-filter:
-    - "*.lan"
-    - stun.*.*.*
-    - stun.*.*
-    - time.windows.com
-    - time.nist.gov
-    - time.apple.com
-    - time.asia.apple.com
-    - "*.ntp.org.cn"
-    - "*.openwrt.pool.ntp.org"
-    - time1.cloud.tencent.com
-    - time.ustc.edu.cn
-    - pool.ntp.org
-    - ntp.ubuntu.com
-    - ntp.aliyun.com
-    - ntp1.aliyun.com
-    - ntp2.aliyun.com
-    - ntp3.aliyun.com
-    - ntp4.aliyun.com
-    - ntp5.aliyun.com
-    - ntp6.aliyun.com
-    - ntp7.aliyun.com
-    - time1.aliyun.com
-    - time2.aliyun.com
-    - time3.aliyun.com
-    - time4.aliyun.com
-    - time5.aliyun.com
-    - time6.aliyun.com
-    - time7.aliyun.com
-    - "*.time.edu.cn"
-    - time1.apple.com
-    - time2.apple.com
-    - time3.apple.com
-    - time4.apple.com
-    - time5.apple.com
-    - time6.apple.com
-    - time7.apple.com
-    - time1.google.com
-    - time2.google.com
-    - time3.google.com
-    - time4.google.com
-    - music.163.com
-    - "*.music.163.com"
-    - "*.126.net"
-    - musicapi.taihe.com
-    - music.taihe.com
-    - songsearch.kugou.com
-    - trackercdn.kugou.com
-    - "*.kuwo.cn"
-    - api-jooxtt.sanook.com
-    - api.joox.com
-    - joox.com
-    - y.qq.com
-    - "*.y.qq.com"
-    - streamoc.music.tc.qq.com
-    - mobileoc.music.tc.qq.com
-    - isure.stream.qqmusic.qq.com
-    - dl.stream.qqmusic.qq.com
-    - aqqmusic.tc.qq.com
-    - amobile.music.tc.qq.com
-    - "*.xiami.com"
-    - "*.music.migu.cn"
-    - music.migu.cn
-    - "*.msftconnecttest.com"
-    - "*.msftncsi.com"
-    - localhost.ptlogin2.qq.com
-    - "*.*.*.srv.nintendo.net"
-    - "*.*.stun.playstation.net"
-    - xbox.*.*.microsoft.com
-    - "*.ipv6.microsoft.com"
-    - "*.*.xboxlive.com"
+
+  nameserver-policy:
+    "geosite:private,cn,apple-cn,microsoft@cn,steam@cn":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.cn":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.中国":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.公司":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.网络":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.goofish.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.idlefish.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.taobao.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.tmall.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.alipay.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.alicdn.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.taobaocdn.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.tbcdn.cn":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.alipayobjects.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.alibabausercontent.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.aliapp.org":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.tb.cn":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.mmstat.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.1688.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.alibaba.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.alimama.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.cainiao.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.aliyun.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.aliyuncs.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.ucweb.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.uc.cn":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.amap.com":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "+.google.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.googleapis.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.googleapis.cn":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.gstatic.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.gvt1.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.gvt2.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.gvt3.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.googleusercontent.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.googlevideo.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.youtube.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.ytimg.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.ggpht.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.android.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.xn--ngstr-lra8j.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.openai.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.chatgpt.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.anthropic.com":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "+.claude.ai":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+    "geosite:geolocation-!cn":
+      - "https://1.1.1.1/dns-query#PROXY"
+      - "https://dns.google/dns-query#PROXY"
+
   nameserver:
-    - https://223.6.6.6/dns-query
-    - https://rubyfish.cn/dns-query
-    - https://dns.pub/dns-query
+    - "https://1.1.1.1/dns-query#PROXY"
+    - "https://1.0.0.1/dns-query#PROXY"
+    - "https://dns.google/dns-query#PROXY"
+
+  fallback:
+    - "https://1.1.1.1/dns-query#PROXY"
+    - "https://dns.google/dns-query#PROXY"
+
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+  direct-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+
+  direct-nameserver-follow-policy: true
+
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    domain:
+      - "+.openai.com"
+      - "+.chatgpt.com"
+      - "+.anthropic.com"
+      - "+.claude.ai"
+      - "+.google.com"
+      - "+.googleapis.com"
+      - "+.googleapis.cn"
+      - "+.gstatic.com"
+      - "+.gvt1.com"
+      - "+.gvt2.com"
+      - "+.gvt3.com"
+      - "+.googleusercontent.com"
+      - "+.ggpht.com"
+      - "+.android.com"
+      - "+.xn--ngstr-lra8j.com"
+      - "+.googlevideo.com"
+      - "+.youtube.com"
+      - "+.ytimg.com"
+      - "+.facebook.com"
+      - "+.instagram.com"
+      - "+.x.com"
+      - "+.twitter.com"
+      - "+.telegram.org"
+    ipcidr:
+      - 240.0.0.0/4
+
+rules:
+  - GEOSITE,private,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+  - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
+  - IP-CIDR,240.0.0.0/4,DIRECT,no-resolve
+  - IP-CIDR6,::1/128,DIRECT,no-resolve
+  - IP-CIDR6,fc00::/7,DIRECT,no-resolve
+  - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+  - IP-CIDR6,ff00::/8,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,goofish.com,DIRECT
+  - DOMAIN-SUFFIX,idlefish.com,DIRECT
+  - DOMAIN-KEYWORD,goofish,DIRECT
+  - DOMAIN-KEYWORD,idlefish,DIRECT
+  - DOMAIN-KEYWORD,xianyu,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  - DOMAIN-SUFFIX,tmall.com,DIRECT
+  - DOMAIN-SUFFIX,tmall.hk,DIRECT
+  - DOMAIN-SUFFIX,alipay.com,DIRECT
+  - DOMAIN-SUFFIX,alicdn.com,DIRECT
+  - DOMAIN-SUFFIX,taobaocdn.com,DIRECT
+  - DOMAIN-SUFFIX,tbcdn.cn,DIRECT
+  - DOMAIN-SUFFIX,alipayobjects.com,DIRECT
+  - DOMAIN-SUFFIX,alibabausercontent.com,DIRECT
+  - DOMAIN-SUFFIX,aliapp.org,DIRECT
+  - DOMAIN-SUFFIX,tb.cn,DIRECT
+  - DOMAIN-SUFFIX,mmstat.com,DIRECT
+  - DOMAIN-SUFFIX,1688.com,DIRECT
+  - DOMAIN-SUFFIX,alibaba.com,DIRECT
+  - DOMAIN-SUFFIX,alimama.com,DIRECT
+  - DOMAIN-SUFFIX,cainiao.com,DIRECT
+  - DOMAIN-SUFFIX,aliyun.com,DIRECT
+  - DOMAIN-SUFFIX,aliyuncs.com,DIRECT
+  - DOMAIN-SUFFIX,ucweb.com,DIRECT
+  - DOMAIN-SUFFIX,uc.cn,DIRECT
+  - DOMAIN-SUFFIX,amap.com,DIRECT
+  - DOMAIN-SUFFIX,youku.com,DIRECT
+  - DOMAIN-SUFFIX,ele.me,DIRECT
+  - DOMAIN-SUFFIX,dingtalk.com,DIRECT
+  - DOMAIN-SUFFIX,openai.com,PROXY
+  - DOMAIN-SUFFIX,chatgpt.com,PROXY
+  - DOMAIN-SUFFIX,anthropic.com,PROXY
+  - DOMAIN-SUFFIX,claude.ai,PROXY
+  - DOMAIN-SUFFIX,google.com,PROXY
+  - DOMAIN-SUFFIX,googleapis.com,PROXY
+  - DOMAIN-SUFFIX,googleapis.cn,PROXY
+  - DOMAIN-SUFFIX,gstatic.com,PROXY
+  - DOMAIN-SUFFIX,gvt1.com,PROXY
+  - DOMAIN-SUFFIX,gvt2.com,PROXY
+  - DOMAIN-SUFFIX,gvt3.com,PROXY
+  - DOMAIN-SUFFIX,googleusercontent.com,PROXY
+  - DOMAIN-SUFFIX,ggpht.com,PROXY
+  - DOMAIN-SUFFIX,android.com,PROXY
+  - DOMAIN-SUFFIX,android.clients.google.com,PROXY
+  - DOMAIN-SUFFIX,android.googleapis.com,PROXY
+  - DOMAIN-SUFFIX,dl.google.com,PROXY
+  - DOMAIN-SUFFIX,dl-ssl.google.com,PROXY
+  - DOMAIN-SUFFIX,play.googleapis.com,PROXY
+  - DOMAIN-SUFFIX,market.android.com,PROXY
+  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,PROXY
+  - GEOSITE,google,PROXY
+  - GEOSITE,youtube,PROXY
+  - GEOSITE,telegram,PROXY
+  - GEOSITE,github,PROXY
+  - GEOSITE,category-games@cn,DIRECT
+  - GEOSITE,apple-cn,DIRECT
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,steam@cn,DIRECT
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-SUFFIX,中国,DIRECT
+  - DOMAIN-SUFFIX,公司,DIRECT
+  - DOMAIN-SUFFIX,网络,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,bilibili.com,DIRECT
+  - DOMAIN-SUFFIX,iqiyi.com,DIRECT
+  - DOMAIN-SUFFIX,qq.com,DIRECT
+  - DOMAIN-SUFFIX,weixin.qq.com,DIRECT
+  - DOMAIN-SUFFIX,gtimg.com,DIRECT
+  - DOMAIN-SUFFIX,jd.com,DIRECT
+  - DOMAIN-SUFFIX,douyin.com,DIRECT
+  - DOMAIN-SUFFIX,amemv.com,DIRECT
+  - DOMAIN-SUFFIX,bytedance.com,DIRECT
+  - DOMAIN-SUFFIX,byteimg.com,DIRECT
+  - DOMAIN-SUFFIX,163.com,DIRECT
+  - DOMAIN-SUFFIX,126.net,DIRECT
+  - DOMAIN-SUFFIX,weibo.com,DIRECT
+  - DOMAIN-SUFFIX,zhihu.com,DIRECT
+  - DOMAIN-SUFFIX,meituan.com,DIRECT
+  - DOMAIN-SUFFIX,pinduoduo.com,DIRECT
+  - DOMAIN-SUFFIX,xiaomi.com,DIRECT
+  - DOMAIN-SUFFIX,mi.com,DIRECT
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  # Force non-CN QUIC/HTTP3 to TCP, which is steadier over XHTTP.
+  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT
+  - GEOSITE,geolocation-!cn,PROXY
+  - MATCH,PROXY
