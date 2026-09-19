@@ -53,8 +53,11 @@
 > [!TIP]
 > 在 `openclash_custom_overwrite.sh` 文件内的 `exit 0` 上方、`CONFIG_FILE="$1"` 的下方粘贴并修改成所需机场节点域名解析 DNS（用来解析AnyTLS协议节点）。没有或者不知道专属 DNS，无视此条设置。
 
+    #用于解析代理节点服务器域名的专用 DNS
     ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "[' DoH1',' DoH2']"
+    #让 DoH 查询优先使用 HTTP/3（QUIC）
     ruby_edit "$CONFIG_FILE" "['dns']['prefer-h3']" "true"
+    #设置 IPv6 DNS 查询超时为 300 毫秒
     ruby_edit "$CONFIG_FILE" "['dns']['ipv6-timeout']" "300"
 
 ### 1.2 示例
