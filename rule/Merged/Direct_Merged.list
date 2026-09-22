@@ -1,12 +1,13 @@
 # Direct_Merged_List
-# UPDATED: 2026-09-16 17:13:04 (UTC+8)
+# UPDATED: 2026-09-23 06:08:30 (UTC+8)
 # DOMAIN: 0
 # DOMAIN-KEYWORD: 0
 # DOMAIN-SUFFIX: 67
-# IP-CIDR: 15
+# IP-CIDR: 25
 # IP-CIDR6: 0
-# NEWLY ADDED: 0
-# TOTAL: 82
+# OTHER: 2
+# NEWLY ADDED: 12
+# TOTAL: 94
 
 DOMAIN-SUFFIX,10jqka.com.cn
 DOMAIN-SUFFIX,95555.com.cn
@@ -75,10 +76,12 @@ DOMAIN-SUFFIX,xiaomi.com
 DOMAIN-SUFFIX,xiaomi.net
 DOMAIN-SUFFIX,xiaomicache.com
 DOMAIN-SUFFIX,xmpush.xiaomi.com
+DST-PORT,7844
 IP-CIDR,1.189.0.0/16,no-resolve
 IP-CIDR,101.231.0.0/16,no-resolve
 IP-CIDR,103.22.181.0/24,no-resolve
 IP-CIDR,103.28.10.0/24,no-resolve
+IP-CIDR,108.174.48.100/32,no-resolve
 IP-CIDR,110.75.0.0/16,no-resolve
 IP-CIDR,115.124.0.0/16,no-resolve
 IP-CIDR,121.15.0.0/16,no-resolve
@@ -90,3 +93,13 @@ IP-CIDR,124.127.32.0/24,no-resolve
 IP-CIDR,124.127.48.0/24,no-resolve
 IP-CIDR,124.127.94.0/24,no-resolve
 IP-CIDR,180.168.146.0/24,no-resolve
+IP-CIDR,198.41.192.0/24,no-resolve
+IP-CIDR,198.41.200.0/24,no-resolve
+IP-CIDR,218.78.7.16/32,no-resolve
+IP-CIDR,47.246.103.0/24,no-resolve
+IP-CIDR,47.246.177.0/24,no-resolve
+IP-CIDR,47.246.180.0/24,no-resolve
+IP-CIDR,47.246.99.0/24,no-resolve
+IP-CIDR,5.5.5.5/32,no-resolve
+IP-CIDR,98.126.27.164/32,no-resolve
+SRC-PORT,41641
