@@ -8,6 +8,7 @@ direct_urls = [
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/main/rule/Clash/Bank_CN.list",
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/main/rule/Clash/Xiaomi_IoT.list",
     "https://cdn.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Direct_Classical_IP.yaml",
+    "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Custom_Direct_Domain.yaml",
 ]
 
 
@@ -22,8 +23,9 @@ def clean_rule_line(line):
     """
     清洗并规范化单行规则，将 YAML 和 List 统一转为标准 List 文本：
     - 去除开头的 '-'、空格、单双引号
-    - 忽略 YAML 结构头（如 payload:）
-    - 忽略带 # 或 ; 的注释行
+    - 自动识别 '+.domain.com' -> 'DOMAIN-SUFFIX,domain.com'
+    - 自动识别 '*keyword*' -> 'DOMAIN-KEYWORD,keyword'
+    - 忽略 YAML 结构头（如 payload:）与注释行
     """
     line = line.strip()
 
@@ -42,11 +44,33 @@ def clean_rule_line(line):
     if not line or line.startswith(("#", ";")):
         return None
 
-    # 5. 去除规则内部多余的逗号末尾空格，规整为标准大写格式（如 DOMAIN-SUFFIX,example.com）
+    # 5. 解析并规范化格式
     parts = [part.strip() for part in line.split(",")]
-    if parts and len(parts) >= 2:
-        parts[0] = parts[0].upper()  # 确保类型名大写 (如 IP-CIDR, DOMAIN)
+
+    # 5.1 标准 List 规则（如 IP-CIDR,1.1.1.1/32 或 DOMAIN-SUFFIX,qq.com）
+    if len(parts) >= 2:
+        parts[0] = parts[0].upper()  # 确保类型名大写
         return ",".join(parts)
+
+    # 5.2 纯 YAML 域名文本（如 "+.00333118.com" 或 "*m-team*"）
+    elif len(parts) == 1:
+        domain = parts[0]
+
+        # 包含通配符 *，提取中间关键字转为 DOMAIN-KEYWORD
+        if "*" in domain:
+            keyword = domain.replace("*", "").strip()
+            if keyword:
+                return f"DOMAIN-KEYWORD,{keyword}"
+
+        # 以 +. 或 . 开头，转为 DOMAIN-SUFFIX
+        elif domain.startswith("+.") or domain.startswith("."):
+            clean_domain = domain.lstrip("+.")
+            if clean_domain:
+                return f"DOMAIN-SUFFIX,{clean_domain}"
+
+        # 其它无前缀纯域名，归类为精准域名 DOMAIN
+        else:
+            return f"DOMAIN,{domain}"
 
     return None
 
@@ -109,7 +133,7 @@ def merge_direct_rules():
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # 6. 写入文件（核心改动：强制 newline="\n" 避免 CRLF 换行符引发 Subconverter 截断 Bug）
+    # 6. 写入文件（强制 newline="\n" 避免 CRLF 换行符引发 Subconverter 截断 Bug）
     with open(output_path, "w", encoding="utf-8", newline="\n") as f:
         f.write("# Direct_Merged_List\n")
         f.write(f"# UPDATED: {updated_at} (UTC+8)\n")
