@@ -32,9 +32,9 @@
     LOG_FILE="/tmp/openclash.log"
     CONFIG_FILE="$1"
 
-    # 1. 修改 DNS 的基础参数
-    ruby_edit "$CONFIG_FILE" "['dns']['prefer-h3']" "true"
-    ruby_edit "$CONFIG_FILE" "['dns']['ipv6-timeout']" "300"
+        # 1. 修改 DNS 的基础参数
+        ruby_edit "$CONFIG_FILE" "['dns']['prefer-h3']" "true"
+        ruby_edit "$CONFIG_FILE" "['dns']['ipv6-timeout']" "300"
 
     # 2. 强制覆盖 NTP 模块与追加 Hosts 映射（一劳永逸防止订阅更新覆盖）
     ruby -ryaml -rYAML -I "/usr/share/openclash" -E UTF-8 -e "
