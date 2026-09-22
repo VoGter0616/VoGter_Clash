@@ -36,31 +36,31 @@
         ruby_edit "$CONFIG_FILE" "['dns']['prefer-h3']" "true"
         ruby_edit "$CONFIG_FILE" "['dns']['ipv6-timeout']" "300"
 
-    # 2. 强制覆盖 NTP 模块与追加 Hosts 映射（一劳永逸防止订阅更新覆盖）
-    ruby -ryaml -rYAML -I "/usr/share/openclash" -E UTF-8 -e "
-      begin
-    Value = YAML.load_file('$CONFIG_FILE');
+        # 2. 强制覆盖 NTP 模块与追加 Hosts 映射（一劳永逸防止订阅更新覆盖）
+        ruby -ryaml -rYAML -I "/usr/share/openclash" -E UTF-8 -e "
+        begin
+        Value = YAML.load_file('$CONFIG_FILE');
     
-    # 注入 NTP 节点
-    Value['ntp'] = {
-      'enable' => true,
-      'server' => 'ntp.aliyun.com',
-      'port' => 123,
-      'interval' => 30,
-      'write-to-system' => true
-    };
+        # 注入 NTP 节点
+        Value['ntp'] = {
+          'enable' => true,
+          'server' => 'ntp.aliyun.com',
+          'port' => 123,
+          'interval' => 30,
+          'write-to-system' => true
+        };
     
-    # 注入阿里 NTP Hosts 静态映射
-    Value['hosts'] ||= {};
-    Value['hosts']['ntp.aliyun.com'] = ['203.107.6.88'];
+        # 注入阿里 NTP Hosts 静态映射
+        Value['hosts'] ||= {};
+        Value['hosts']['ntp.aliyun.com'] = ['203.107.6.88'];
 
-      rescue Exception => e
-    puts '${LOGTIME} [error] Set NTP & Hosts Failed,【' + e.message + '】';
-      ensure
-    File.open('$CONFIG_FILE', 'w') { |f| f.write(Value.to_yaml) }
-      end" 2>/dev/null >> $LOG_FILE
+        rescue Exception => e
+        puts '${LOGTIME} [error] Set NTP & Hosts Failed,【' + e.message + '】';
+        ensure
+        File.open('$CONFIG_FILE', 'w') { |f| f.write(Value.to_yaml) }
+        end" 2>/dev/null >> $LOG_FILE
 
-    exit 0
+      exit 0
 
 ### 1.2 示例
 
