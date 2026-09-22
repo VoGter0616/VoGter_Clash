@@ -6,6 +6,7 @@ import requests
 cdn_urls = [
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/refs/heads/main/rule/Clash/BitComet_CDN.list",
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/refs/heads/main/rule/Clash/Steam_CDN.list",
+    "https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/main/rule/Steam_CDN.list",
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/refs/heads/main/rule/Clash/Direct.list",
     "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Nvidia/Nvidia.list",
 ]
