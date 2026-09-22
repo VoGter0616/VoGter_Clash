@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import datetime, timezone, timedelta
 import requests
 
@@ -6,6 +7,7 @@ import requests
 direct_urls = [
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/main/rule/Clash/Bank_CN.list",
     "https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/main/rule/Clash/Xiaomi_IoT.list",
+    "https://cdn.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Direct_Classical_IP.yaml",
 ]
 
 
@@ -14,6 +16,39 @@ def get_beijing_time():
     utc_now = datetime.now(timezone.utc)
     beijing_now = utc_now.astimezone(timezone(timedelta(hours=8)))
     return beijing_now.strftime("%Y-%m-%d %H:%M:%S")
+
+
+def clean_rule_line(line):
+    """
+    清洗并规范化单行规则，将 YAML 和 List 统一转为标准 List 文本：
+    - 去除开头的 '-'、空格、单双引号
+    - 忽略 YAML 结构头（如 payload:）
+    - 忽略带 # 或 ; 的注释行
+    """
+    line = line.strip()
+
+    # 1. 过滤空行、注释行以及 YAML 根节点声明
+    if not line or line.startswith(("#", ";", "//")) or line.startswith("payload:"):
+        return None
+
+    # 2. 去除 YAML 列表符 '-'
+    if line.startswith("-"):
+        line = line[1:].strip()
+
+    # 3. 去除包裹在规则外侧的单双引号
+    line = line.strip("'\"")
+
+    # 4. 再次判断去除符号后是否仍存在有效规则
+    if not line or line.startswith(("#", ";")):
+        return None
+
+    # 5. 去除规则内部多余的逗号末尾空格，规整为标准大写格式（如 DOMAIN-SUFFIX,example.com）
+    parts = [part.strip() for part in line.split(",")]
+    if parts and len(parts) >= 2:
+        parts[0] = parts[0].upper()  # 确保类型名大写 (如 IP-CIDR, DOMAIN)
+        return ",".join(parts)
+
+    return None
 
 
 def merge_direct_rules():
@@ -26,22 +61,22 @@ def merge_direct_rules():
         try:
             with open(output_path, "r", encoding="utf-8") as f:
                 for line in f.readlines():
-                    line = line.strip()
-                    if line and not line.startswith(("#", ";")):
-                        old_rules.add(line)
+                    cleaned = clean_rule_line(line)
+                    if cleaned:
+                        old_rules.add(cleaned)
         except Exception as e:
             print(f"读取旧文件失败或旧文件不存在: {e}")
 
-    # 2. 抓取最新规则
+    # 2. 抓取并统一解析 YAML / List 规则
     new_rules = set()
     for url in direct_urls:
         try:
             response = requests.get(url, timeout=15)
             if response.status_code == 200:
                 for line in response.text.splitlines():
-                    line = line.strip()
-                    if line and not line.startswith(("#", ";")):
-                        new_rules.add(line)
+                    cleaned = clean_rule_line(line)
+                    if cleaned:
+                        new_rules.add(cleaned)
         except Exception as e:
             print(f"Error fetching {url}: {e}")
 
@@ -61,7 +96,7 @@ def merge_direct_rules():
     for rule in new_rules:
         parts = rule.split(",")
         if parts:
-            rule_type = parts[0].strip().upper()
+            rule_type = parts[0]
             if rule_type in stats:
                 stats[rule_type] += 1
             else:
@@ -70,12 +105,12 @@ def merge_direct_rules():
     total_count = len(new_rules)
     updated_at = get_beijing_time()
 
-    # 5. 确保目录存在
+    # 5. 确保输出目录存在
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # 6. 写入文件（头部全为纯数字计数）
-    with open(output_path, "w", encoding="utf-8") as f:
+    # 6. 写入文件（核心改动：强制 newline="\n" 避免 CRLF 换行符引发 Subconverter 截断 Bug）
+    with open(output_path, "w", encoding="utf-8", newline="\n") as f:
         f.write("# Direct_Merged_List\n")
         f.write(f"# UPDATED: {updated_at} (UTC+8)\n")
         f.write(f"# DOMAIN: {stats['DOMAIN']}\n")
@@ -90,6 +125,7 @@ def merge_direct_rules():
 
         # 写入排序后的具体规则列表
         f.write("\n".join(sorted(new_rules)))
+        f.write("\n")
 
     # 控制台日志
     print(
