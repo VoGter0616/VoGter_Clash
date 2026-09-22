@@ -1,12 +1,12 @@
 # Custom_Proxy_List
-# UPDATED: 2026-09-23 06:09:02 (UTC+8)
+# UPDATED: 2026-09-23 06:31:35 (UTC+8)
 # DOMAIN: 10
 # DOMAIN-KEYWORD: 26
-# DOMAIN-SUFFIX: 6795
+# DOMAIN-SUFFIX: 6796
 # IP-CIDR: 94
 # IP-CIDR6: 4
 # NEWLY ADDED: 1
-# TOTAL: 6929
+# TOTAL: 6930
 
 DOMAIN,api.waqi.info
 DOMAIN,aqi.aqicn.org
@@ -5314,6 +5314,7 @@ DOMAIN-SUFFIX,strongwindpress.com
 DOMAIN-SUFFIX,student.tw
 DOMAIN-SUFFIX,studentsforafreetibet.org
 DOMAIN-SUFFIX,stumbleupon.com
+DOMAIN-SUFFIX,stun.playstation.net
 DOMAIN-SUFFIX,stupidvideos.com
 DOMAIN-SUFFIX,stweetly.com
 DOMAIN-SUFFIX,subacme.rerouted.org
