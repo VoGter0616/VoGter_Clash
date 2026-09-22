@@ -1,12 +1,12 @@
 # Custom_Proxy_List
-# UPDATED: 2026-09-22 17:13:36 (UTC+8)
+# UPDATED: 2026-09-23 06:09:02 (UTC+8)
 # DOMAIN: 10
 # DOMAIN-KEYWORD: 26
 # DOMAIN-SUFFIX: 6795
-# IP-CIDR: 93
+# IP-CIDR: 94
 # IP-CIDR6: 4
-# NEWLY ADDED: 0
-# TOTAL: 6928
+# NEWLY ADDED: 1
+# TOTAL: 6929
 
 DOMAIN,api.waqi.info
 DOMAIN,aqi.aqicn.org
@@ -6898,6 +6898,7 @@ IP-CIDR,203.208.40.0/23,no-resolve
 IP-CIDR,203.208.43.0/24,no-resolve
 IP-CIDR,203.208.50.0/24,no-resolve
 IP-CIDR,204.15.20.0/22,no-resolve
+IP-CIDR,207.241.224.2/32,no-resolve
 IP-CIDR,208.43.0.0/16,no-resolve
 IP-CIDR,220.181.174.162/32,no-resolve
 IP-CIDR,220.181.174.226/32,no-resolve
