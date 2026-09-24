@@ -1,12 +1,12 @@
 # CDN_Merged
-# UPDATED: 2026-09-24 17:03:56 (UTC+8)
+# UPDATED: 2026-09-25 02:03:04 (UTC+8)
 # DOMAIN: 7
 # DOMAIN-KEYWORD: 12
-# DOMAIN-SUFFIX: 156
+# DOMAIN-SUFFIX: 157
 # IP-CIDR: 32
 # IP-CIDR6: 0
-# NEWLY ADDED: 0
-# TOTAL: 207
+# NEWLY ADDED: 1
+# TOTAL: 208
 
 DOMAIN,crl.apple.com
 DOMAIN,ns1.pubdns.co
@@ -46,6 +46,7 @@ DOMAIN-SUFFIX,comodoca.com
 DOMAIN-SUFFIX,content-system.net
 DOMAIN-SUFFIX,cs.steampowered.com
 DOMAIN-SUFFIX,ctobsnssdk.com
+DOMAIN-SUFFIX,datatft.com
 DOMAIN-SUFFIX,digicert.com
 DOMAIN-SUFFIX,docker.1panel.live
 DOMAIN-SUFFIX,docker.kejilion.pro
