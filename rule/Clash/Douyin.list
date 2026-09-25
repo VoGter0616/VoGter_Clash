@@ -1,0 +1,77 @@
+# Douyin (Domestic TikTok) Complete Ruleset
+# UPDATED: 2026-09-25
+# TOTAL: 62
+
+# ==========================================================
+# 1. 抖音 & 字节跳动国内风控、设备与地区环境校验 API
+# ==========================================================
+# 用于设备指纹识别、IP 归属地校验、基站/GPS 辅助定位与防刷风控
+DOMAIN-SUFFIX,zijieapi.com
+DOMAIN-SUFFIX,snssdk.com
+DOMAIN-SUFFIX,pstatp.com
+DOMAIN-SUFFIX,toutiao.com
+DOMAIN-SUFFIX,bytedance.net
+DOMAIN-SUFFIX,bytedance.com
+DOMAIN-SUFFIX,bytegecko.com
+DOMAIN-SUFFIX,byteoversea.com
+DOMAIN-SUFFIX,ibytedtos.com
+DOMAIN-SUFFIX,volces.com
+DOMAIN-SUFFIX,volcengine.com
+DOMAIN-SUFFIX,volcengineapi.com
+DOMAIN,sdk-log-upload.douyin.com
+DOMAIN,log.douyin.com
+DOMAIN,analytics.snssdk.com
+
+# ==========================================================
+# 2. 抖音直播控制信令 & Webcast 房间鉴权
+# ==========================================================
+DOMAIN,live.douyin.com
+DOMAIN,webcast.douyin.com
+DOMAIN-SUFFIX,webcast.amemv.com
+DOMAIN-SUFFIX,webcast-auto.douyin.com
+DOMAIN-SUFFIX,webcast.huoshan.com
+DOMAIN-SUFFIX,webcast-fanxing.douyin.com
+DOMAIN-KEYWORD,douyin-live
+DOMAIN-KEYWORD,webcast-live
+
+# ==========================================================
+# 3. 抖音直播音视频拉流/推流 CDN (FLV / RTMP / WebRTC)
+# ==========================================================
+DOMAIN-SUFFIX,douyinliving.com
+DOMAIN-SUFFIX,douyinvod.com
+DOMAIN-SUFFIX,pull-flv-l1.douyincdn.com
+DOMAIN-SUFFIX,pull-flv-l3.douyincdn.com
+DOMAIN-SUFFIX,pull-rtmp-l1.douyincdn.com
+DOMAIN-SUFFIX,pull-hls-l1.douyincdn.com
+DOMAIN-SUFFIX,live-pull-flv.douyincdn.com
+DOMAIN-SUFFIX,live-pull-hls.douyincdn.com
+DOMAIN-SUFFIX,live-push.douyincdn.com
+DOMAIN-SUFFIX,douyin-livecdn.com
+DOMAIN-SUFFIX,bytedlive.com
+
+# ==========================================================
+# 4. 抖音主站应用、短视频与图片静态 CDN
+# ==========================================================
+DOMAIN-SUFFIX,douyin.com
+DOMAIN-SUFFIX,douyincdn.com
+DOMAIN-SUFFIX,douyinpic.com
+DOMAIN-SUFFIX,douyinstatic.com
+DOMAIN-SUFFIX,douyinvideo.net
+DOMAIN-SUFFIX,iesdouyin.com
+DOMAIN-SUFFIX,amemv.com
+DOMAIN-SUFFIX,byteimg.com
+
+# ==========================================================
+# 5. 字节跳动国内自建 CDN & 云服务 IP 段 (IP-CIDR)
+# ==========================================================
+# 直播流核心 IP 段，no-resolve 防止 DNS 反解析延迟
+IP-CIDR,110.242.0.0/16,no-resolve
+IP-CIDR,111.62.0.0/15,no-resolve
+IP-CIDR,112.19.0.0/16,no-resolve
+IP-CIDR,120.222.0.0/16,no-resolve
+IP-CIDR,120.232.0.0/16,no-resolve
+IP-CIDR,120.241.0.0/16,no-resolve
+IP-CIDR,180.163.0.0/16,no-resolve
+IP-CIDR,180.184.0.0/15,no-resolve
+IP-CIDR,220.243.0.0/16,no-resolve
+IP-CIDR,223.160.0.0/16,no-resolve
