@@ -1,0 +1,79 @@
+# TikTok Live & Geo-Checking Complete Ruleset
+# UPDATED: 2026-09-25
+# TOTAL: 52
+
+# ==========================================================
+# 1. 地理位置、地区与 IP 校验服务 (Geo & IP Check)
+# ==========================================================
+# 校验设备所在国家/地区及运营商环境，防跨区直播封禁
+DOMAIN,ip-api.com
+DOMAIN,ipinfo.io
+DOMAIN,api.myip.com
+DOMAIN-SUFFIX,byteoversea.com
+DOMAIN-SUFFIX,ibytedtos.com
+DOMAIN-SUFFIX,pstatp.com
+DOMAIN-SUFFIX,sgpstatp.com
+DOMAIN-KEYWORD,location-api
+
+# ==========================================================
+# 2. TikTok 直播控制信令 & Webcast 房间鉴权 API
+# ==========================================================
+DOMAIN-KEYWORD,tiktokv-live
+DOMAIN-KEYWORD,tiktok-live
+DOMAIN-SUFFIX,live.tiktok.com
+DOMAIN-SUFFIX,live-va.tiktokv.com
+DOMAIN-SUFFIX,live-sg.tiktokv.com
+DOMAIN-SUFFIX,live-hkg.tiktokv.com
+DOMAIN-SUFFIX,live-maliva.tiktokv.com
+DOMAIN-SUFFIX,webcast.tiktok.com
+DOMAIN-SUFFIX,webcast-va.tiktokv.com
+DOMAIN-SUFFIX,webcast-sg.tiktokv.com
+DOMAIN-SUFFIX,webcast-hkg.tiktokv.com
+DOMAIN-SUFFIX,webcast-maliva.tiktokv.com
+
+# ==========================================================
+# 3. TikTok 直播流媒体 CDN (FLV / RTMP / HLS / WebRTC)
+# ==========================================================
+DOMAIN-SUFFIX,tiktok-livecdn.com
+DOMAIN-SUFFIX,tiktok-live-out.com
+DOMAIN-SUFFIX,tiktok-live-in.com
+DOMAIN-SUFFIX,pull-flv-f5.tiktokcdn.com
+DOMAIN-SUFFIX,pull-flv-l5.tiktokcdn.com
+DOMAIN-SUFFIX,pull-flv-l11.tiktokcdn.com
+DOMAIN-SUFFIX,pull-rtmp-f5.tiktokcdn.com
+DOMAIN-SUFFIX,pull-rtmp-l5.tiktokcdn.com
+DOMAIN-SUFFIX,pull-hls-f5.tiktokcdn.com
+DOMAIN-SUFFIX,pull-hls-l5.tiktokcdn.com
+DOMAIN-SUFFIX,live-pull-hls.tiktokcdn.com
+DOMAIN-SUFFIX,live-pull-flv.tiktokcdn.com
+
+# ==========================================================
+# 4. ByteDance 全球直播基础架构 (Worldwide Edge Infrastructure)
+# ==========================================================
+DOMAIN-KEYWORD,bytedlive
+DOMAIN-SUFFIX,bytedlive.com
+DOMAIN-SUFFIX,byteoversea.net
+DOMAIN-SUFFIX,muscdn.com
+DOMAIN-SUFFIX,musical.ly
+
+# ==========================================================
+# 5. TikTok 直播 CDN 核心 IP 段 (IP-CIDR)
+# ==========================================================
+# 绕过域名 DNS 延迟，强制把音视频数据包分流到同一策略组
+IP-CIDR,110.238.100.0/22,no-resolve
+IP-CIDR,110.238.104.0/21,no-resolve
+IP-CIDR,110.238.112.0/20,no-resolve
+IP-CIDR,120.222.0.0/16,no-resolve
+IP-CIDR,120.232.0.0/16,no-resolve
+IP-CIDR,120.241.0.0/16,no-resolve
+IP-CIDR,156.59.0.0/16,no-resolve
+IP-CIDR,161.117.0.0/16,no-resolve
+
+# ==========================================================
+# 6. 抖音 (国内同源架构，可选用于对照)
+# ==========================================================
+DOMAIN-SUFFIX,live.douyin.com
+DOMAIN-SUFFIX,webcast.douyin.com
+DOMAIN-SUFFIX,douyincdn.com
+DOMAIN-SUFFIX,douyinliving.com
+DOMAIN-SUFFIX,douyinvod.com
