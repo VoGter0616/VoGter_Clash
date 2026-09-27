@@ -1,13 +1,13 @@
 # Direct_Merged_List
-# UPDATED: 2026-09-26 17:16:24 (UTC+8)
+# UPDATED: 2026-09-27 17:56:20 (UTC+8)
 # DOMAIN: 0
 # DOMAIN-KEYWORD: 3
-# DOMAIN-SUFFIX: 966
+# DOMAIN-SUFFIX: 974
 # IP-CIDR: 25
 # IP-CIDR6: 0
 # OTHER: 2
-# NEWLY ADDED: 5
-# TOTAL: 996
+# NEWLY ADDED: 8
+# TOTAL: 1004
 
 DOMAIN-KEYWORD,m-team
 DOMAIN-KEYWORD,quickconnect
@@ -109,6 +109,7 @@ DOMAIN-SUFFIX,aisnogames.com
 DOMAIN-SUFFIX,aistudio-app.com
 DOMAIN-SUFFIX,akamaihd.net
 DOMAIN-SUFFIX,akamaized.net
+DOMAIN-SUFFIX,allptt.com
 DOMAIN-SUFFIX,alonginwind.eu.org
 DOMAIN-SUFFIX,alonginwind.to
 DOMAIN-SUFFIX,alonginwind.top
@@ -146,6 +147,7 @@ DOMAIN-SUFFIX,banban.work
 DOMAIN-SUFFIX,bankcomm.com
 DOMAIN-SUFFIX,bankofbeijing.com.cn
 DOMAIN-SUFFIX,bankofshanghai.com
+DOMAIN-SUFFIX,banxueketang.com
 DOMAIN-SUFFIX,baominggongju.com
 DOMAIN-SUFFIX,batchat.com
 DOMAIN-SUFFIX,bdcb.cc
@@ -225,6 +227,7 @@ DOMAIN-SUFFIX,cone-x.com
 DOMAIN-SUFFIX,congmiqq.com
 DOMAIN-SUFFIX,constasj.me
 DOMAIN-SUFFIX,coros.com
+DOMAIN-SUFFIX,cqjypg.com
 DOMAIN-SUFFIX,cqnbmarathon.com
 DOMAIN-SUFFIX,crrcgo.cc
 DOMAIN-SUFFIX,crtyhr.com
@@ -500,6 +503,7 @@ DOMAIN-SUFFIX,jsdelivr.com
 DOMAIN-SUFFIX,jsdelivr.net
 DOMAIN-SUFFIX,jsj.top
 DOMAIN-SUFFIX,jspvz.com
+DOMAIN-SUFFIX,juantui.com
 DOMAIN-SUFFIX,julebu.co
 DOMAIN-SUFFIX,jxjktzjt.com
 DOMAIN-SUFFIX,jxpp.com
@@ -535,6 +539,7 @@ DOMAIN-SUFFIX,latexlive.com
 DOMAIN-SUFFIX,leadweigh.com
 DOMAIN-SUFFIX,leelen.com
 DOMAIN-SUFFIX,letaoedu.com
+DOMAIN-SUFFIX,lezuan6.com
 DOMAIN-SUFFIX,lg3000.top
 DOMAIN-SUFFIX,lightmake.site
 DOMAIN-SUFFIX,linka2a.net
@@ -542,6 +547,7 @@ DOMAIN-SUFFIX,linux.sb
 DOMAIN-SUFFIX,listenai.com
 DOMAIN-SUFFIX,liunn.com
 DOMAIN-SUFFIX,liveperson.net
+DOMAIN-SUFFIX,ljj233.top
 DOMAIN-SUFFIX,longmenshuju.com
 DOMAIN-SUFFIX,loveutips.com
 DOMAIN-SUFFIX,lsbj365.com
@@ -786,6 +792,8 @@ DOMAIN-SUFFIX,tdrgame.top
 DOMAIN-SUFFIX,terra-master.com
 DOMAIN-SUFFIX,terrabbs.ink
 DOMAIN-SUFFIX,tggfl.com
+DOMAIN-SUFFIX,tgpro.net
+DOMAIN-SUFFIX,tgpro.top
 DOMAIN-SUFFIX,theluyuan.com
 DOMAIN-SUFFIX,theuwa.com
 DOMAIN-SUFFIX,thinkerride.com
