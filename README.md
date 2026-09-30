@@ -764,11 +764,14 @@
       time.apple.com:
       - 17.253.114.253
       - 17.253.114.125
-      #专属DoH真实IP可通过终端nslookup命令获取
-      #专属DoH1:
-      - DoH1真实IP
-      #专属DoH2:
-      - DoH2真实IP
+      #专属DoH真实IP可通过终端nslookup命令获取，修改后删除标注#使其生效
+      #示例：
+      #doh1.abc.com:
+      #- 1.2.3.4
+      #专属DoH1域名:
+      #- DoH1真实IP
+      #专属DoH2域名:
+      #- DoH2真实IP
       ntp.aliyun.com:
       - 203.107.6.88
 
