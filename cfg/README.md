@@ -34,6 +34,11 @@
 > [!TIP]
 > 在 `openclash_custom_overwrite.sh` 文件内复制下方粘贴并修改DNS基础参数为所需机场节点域名解析 DNS（用来解析AnyTLS协议节点）。
 
+> [!WARNING]
+> AnyTLS协议节点通常需搭配专属DNS做解析，如何获取专属DNS请自行联系机场主或拉取机场 `yaml` 找到 `proxy-server-nameserver` 参数自行修改
+>
+> 本教程不提供任何私人第三方DNS，请注意甄别
+
     #!/bin/sh
     . /usr/share/openclash/ruby.sh
     . /usr/share/openclash/log.sh
