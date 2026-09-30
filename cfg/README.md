@@ -46,7 +46,7 @@
 
         # 1. 修改 DNS 的基础参数
         #将DoH1和DoH2修改为所需机场节点域名解析 DNS（用来解析AnyTLS协议节点），不知道或没有专属DNS，删除“ ,'DoH1','DoH2' ”即可
-        ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "['1.1.1.1','8.8.8.8','DoH1','DoH2']"
+        ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "['223.5.5.5','119.29.29.29','DoH1','DoH2']"
         ruby_edit "$CONFIG_FILE" "['dns']['prefer-h3']" "true"
         ruby_edit "$CONFIG_FILE" "['dns']['ipv6-timeout']" "300"
 
