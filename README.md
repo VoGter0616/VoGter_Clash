@@ -755,15 +755,16 @@
 
 | 服务器分组 | 服务器地址 | 服务器类型 | 状态 | 操作 |
 | --- | --- | --- | --- | --- |
+| nameserver | dhcp://system | UDP | 启用 | 旁路由模式下将其改成主路由网关，默认关闭 |
 | nameserver | 223.5.5.5 | UDP | 启用 | |
 | nameserver | 119.29.29.29 | UDP | 启用 | |
-| nameserver | dhcp://system | UDP | 启用 | 旁路由模式下将其改成主路由网关，默认关闭 |
-| fallback | dns.google/dns-query | HTTPS | 启用 |  |
-| fallback | cloudflare-dns.com/dns-query | HTTPS | 启用 |  |
+| fallback | 223.5.5.5/dns-query | HTTPS | 启用 |  |
+| fallback | 223.6.6.6/dns-query | HTTPS | 启用 |  |
+| fallback | 119.29.29.29 | UDP | 启用 |  |
 | default-nameserver | 223.5.5.5 | UDP | 启用 | |
 | default-nameserver | 119.29.29.29 | UDP | 启用 | |
-| default-nameserver | 2400:3200::1 | UDP | 启用 | 使用 IPv6 DNS 解析时开启 |
-| default-nameserver | 8.8.8.8 | UDP | 启用 |  |
+| default-nameserver | 2400:3200::1 | UDP | 根据使用情况启用 | 使用 IPv6 DNS 解析时开启 |
+| default-nameserver | 8.8.8.8 | UDP | 根据使用情况启用 |  |
 
 ### 3.3 Meta 设置
 
