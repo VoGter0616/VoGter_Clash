@@ -78,7 +78,7 @@
 
 ### 1.2 示例
 
-    ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "['1.1.1.1','8.8.8.8','https://abc.xxx.com/dns1_query','https://abc.xxx.com/dns2_query']"
+    ruby_edit "$CONFIG_FILE" "['dns']['proxy-server-nameserver']" "['223.5.5.5','119.29.29.29','https://abc.xxx.com/dns1_query','https://abc.xxx.com/dns2_query']"
 
 ---
 
