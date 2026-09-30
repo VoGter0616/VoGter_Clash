@@ -732,6 +732,27 @@
     # +.tailscale.com
     live-push.bilivideo.com
 
+**Hosts 配置（覆盖原有配置）：**
+
+      dns.google:
+      - 8.8.8.8
+      - 8.8.4.4
+      dns.cloudflare.com:
+      - 1.1.1.1
+      - 1.0.0.1
+      dns.alidns.com:
+      - 223.5.5.5
+      time.apple.com:
+      - 17.253.114.253
+      - 17.253.114.125
+      #专属DoH真实IP可通过终端nslookup命令获取
+      #专属DoH1:
+      - DoH1真实IP
+      #专属DoH2:
+      - DoH2真实IP
+      ntp.aliyun.com:
+      - 203.107.6.88
+
 **设置自定义上游 DNS 服务器**（在上方设置中启用本功能后生效）：
 
 | 服务器分组 | 服务器地址 | 服务器类型 | 状态 | 操作 |
