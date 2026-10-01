@@ -902,7 +902,7 @@
 | 在线订阅转换 | ✅ |
 | 订阅转换服务地址 | 自己的后端（版本 0.9.9）（注！公用后端暂不支持AnyTLS协议转换，建议自己搭建asdlokj1qpi23/subconverter后端使用） |
 | 订阅转换模板 | 自定义模板 |
-| 自定义模板地址 | `https://cdn.jsdelivr.net/gh/VoGter0616/VoGter_Clash@main/cfg/Clash_custom.ini` |
+| 自定义模板地址 | `(https://raw.githubusercontent.com/VoGter0616/VoGter_Clash/main/cfg/Clash_IPLC_VIP.ini)` |
 | 跳过证书验证 | 启用 |
 
 其他参数根据自身情况设置。
