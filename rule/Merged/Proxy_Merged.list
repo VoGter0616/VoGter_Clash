@@ -1,12 +1,12 @@
 # Custom_Proxy_List
-# UPDATED: 2026-10-02 18:25:38 (UTC+8)
+# UPDATED: 2026-10-05 19:21:24 (UTC+8)
 # DOMAIN: 10
 # DOMAIN-KEYWORD: 26
-# DOMAIN-SUFFIX: 6803
+# DOMAIN-SUFFIX: 6807
 # IP-CIDR: 97
 # IP-CIDR6: 4
-# NEWLY ADDED: 2
-# TOTAL: 6940
+# NEWLY ADDED: 4
+# TOTAL: 6944
 
 DOMAIN,api.waqi.info
 DOMAIN,aqi.aqicn.org
@@ -6295,6 +6295,7 @@ DOMAIN-SUFFIX,wainao.me
 DOMAIN-SUFFIX,waiwaier.com
 DOMAIN-SUFFIX,walletconnect.com
 DOMAIN-SUFFIX,walletconnect.org
+DOMAIN-SUFFIX,wallhaven.cc
 DOMAIN-SUFFIX,wallmama.com
 DOMAIN-SUFFIX,wallornot.org
 DOMAIN-SUFFIX,wallpapercasa.com
@@ -6416,6 +6417,7 @@ DOMAIN-SUFFIX,wiki.kfd.me
 DOMAIN-SUFFIX,wikia.com
 DOMAIN-SUFFIX,wikibooks.org
 DOMAIN-SUFFIX,wikidata.org
+DOMAIN-SUFFIX,wikifunctions.org
 DOMAIN-SUFFIX,wikileaks-forum.com
 DOMAIN-SUFFIX,wikileaks.ch
 DOMAIN-SUFFIX,wikileaks.com
@@ -6428,12 +6430,14 @@ DOMAIN-SUFFIX,wikileaks.pl
 DOMAIN-SUFFIX,wikilivres.info
 DOMAIN-SUFFIX,wikimapia.org
 DOMAIN-SUFFIX,wikimedia.org
+DOMAIN-SUFFIX,wikimediafoundation.org
 DOMAIN-SUFFIX,wikinews.org
 DOMAIN-SUFFIX,wikipedia.com
 DOMAIN-SUFFIX,wikipedia.org
 DOMAIN-SUFFIX,wikiquote.org
 DOMAIN-SUFFIX,wikis.tw
 DOMAIN-SUFFIX,wikisource.org
+DOMAIN-SUFFIX,wikispecies.org
 DOMAIN-SUFFIX,wikiunblocked.org
 DOMAIN-SUFFIX,wikiversity.org
 DOMAIN-SUFFIX,wikivoyage.org
