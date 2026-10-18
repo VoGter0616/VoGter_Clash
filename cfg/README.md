@@ -503,6 +503,7 @@
 
 **Fake-IP-Filter 配置（覆盖原有配置）：**
 
+    # 1. 本地 / 局域网 / 保留域名
     *.somethingstranges.com
     *.lan
     *.localdomain
@@ -513,63 +514,44 @@
     *.local
     *.home.arpa
     *.direct
+
+    # 2. 网络探测 / 强制门户
     cable.auth.com
     network-test.debian.org
     detectportal.firefox.com
     resolver1.opendns.com
-    global.turn.twilio.com
-    global.stun.twilio.com
-    app.yinxiang.com
-    injections.adguard.org
-    +.weixin.qq.com
-    *.blzstatic.cn
-    *.cmpassport.com
-    id6.me
-    open.e.189.cn
-    opencloud.wostore.cn
-    id.mail.wo.cn
-    mdn.open.wo.cn
-    hmrz.wo.cn
-    nishub1.10010.com
-    enrichgw.10010.com
-    *.wosms.cn
-    *.jegotrip.com.cn
-    *.icitymobile.mobi
-    *.pingan.com.cn
-    *.cmbchina.com
-    *.10099.com.cn
-    *.microdone.cn
     +.msftconnecttest.com
     +.msftncsi.com
-    *.time.edu.cn
-    *.ntp.org.cn
+
+    # 3. STUN / 实时通信
+    global.turn.twilio.com
+    global.stun.twilio.com
+    stun.l.google.com
+    lens.l.google.com
+    na.b.g-tun.com
+    +.stun.playstation.net
+
+    # 4. NTP 时间同步
+    +.ntp.org.cn
     time.android.com
     time.windows.com
+    time.apple.com
     +.pool.ntp.org
-    music.163.com
-    *.music.163.com
-    *.126.net
-    musicapi.taihe.com
-    music.taihe.com
-    songsearch.kugou.com
-    trackercdn.kugou.com
-    *.kuwo.cn
-    api-jooxtt.sanook.com
-    api.joox.com
-    joox.com
-    y.qq.com
-    *.y.qq.com
-    streamoc.music.tc.qq.com
-    mobileoc.music.tc.qq.com
-    isure.stream.qqmusic.qq.com
-    dl.stream.qqmusic.qq.com
-    aqqmusic.tc.qq.com
-    amobile.music.tc.qq.com
-    *.xiami.com
-    *.music.migu.cn
-    music.migu.cn
-    localhost.ptlogin2.qq.com
-    localhost.sec.qq.com
+    +.time.edu.cn
+
+    # 5. Apple 系统服务
+    mesu.apple.com
+    swscan.apple.com
+    swquery.apple.com
+    swdownload.apple.com
+    swcdn.apple.com
+    swdist.apple.com
+    mask.icloud.com
+    mask-h2.icloud.com
+    mask.apple-dns.net
+
+    # 6. 腾讯 / 微信 / QQ
+    +.weixin.qq.com
     +.qq.com
     +.tencent.com
     +.wechat.com
@@ -583,6 +565,10 @@
     +.qcloud.com
     +.qcloudcdn.com
     +.dnsv1.com
+    localhost.ptlogin2.qq.com
+    localhost.sec.qq.com
+
+    # 7. 阿里巴巴 / 淘宝 / 支付宝
     +.taobao.com
     +.tmall.com
     +.alicdn.com
@@ -602,6 +588,8 @@
     +.kunlunca.com
     +.kunlungr.com
     +.aliclouddns.com
+
+    # 8. 百度 / 字节跳动 / 抖音
     +.baidu.com
     +.shifen.com
     +.bdstatic.com
@@ -625,6 +613,8 @@
     +.toutiao.com
     +.toutiaovod.com
     +.bytedance.net
+
+    # 9. 京东 / B站 / 网易 / 爱奇艺 / 优酷
     +.jd.com
     +.jcloudimg.com
     +.jd360.hk
@@ -643,6 +633,8 @@
     +.youku.com
     +.ykimg.com
     +.tudou.com
+
+    # 10. 小红书 / 拼多多 / 快手 / 美团
     +.xiaohongshu.com
     +.xhscdn.com
     +.xhscdn.net
@@ -658,11 +650,25 @@
     +.meituan.net
     +.dianping.com
     +.dpfile.com
+
+    # 11. 知乎 / 微博 / 搜狐 / 搜狗 / CSDN
     +.zhihu.com
     +.zhimg.com
     +.sina.com.cn
     +.weibo.com
+    +.sohu.com
+    +.sogou.com
+    +.csdn.net
+    +.jianshu.com
+
+    # 12. 小米 / 华为 / 迅雷 / 115 / 下载
     dlg.io.mi.com
+    +.mi.com
+    +.xiaomi.com
+    +.market.xiaomi.com
+    +.miui.com
+    +.huawei.com
+    +.vmall.com
     +.115.com
     +.115cdn.com
     +.115cdn.net
@@ -675,6 +681,65 @@
     +.sandai.net
     +.n0808.com
     +.wscdns.com
+
+    # 13. 游戏平台 / 加速器
+    +.battlenet.com.cn
+    +.wotgame.cn
+    +.wggames.cn
+    +.wowsgame.cn
+    +.uu.163.com
+    ps.res.netease.com
+    +.wilds.monsterhunter.com
+    +.playfabapi.com
+    +.cloudapp.azure.com
+    +.westeurope.cloudapp.azure.com
+    +.vodafone-ip.de
+
+    # 14. 运营商 / 金融 / 短信服务
+    id6.me
+    open.e.189.cn
+    opencloud.wostore.cn
+    id.mail.wo.cn
+    mdn.open.wo.cn
+    hmrz.wo.cn
+    nishub1.10010.com
+    enrichgw.10010.com
+    +.wosms.cn
+    +.jegotrip.com.cn
+    +.icitymobile.mobi
+    +.pingan.com.cn
+    +.cmbchina.com
+    +.10099.com.cn
+    +.microdone.cn
+    +.blzstatic.cn
+    +.cmpassport.com
+
+    # 15. 音乐 / 流媒体（国内）
+    music.163.com
+    +.music.163.com
+    +.126.net
+    musicapi.taihe.com
+    music.taihe.com
+    songsearch.kugou.com
+    trackercdn.kugou.com
+    +.kuwo.cn
+    api-jooxtt.sanook.com
+    api.joox.com
+    joox.com
+    y.qq.com
+    +.y.qq.com
+    streamoc.music.tc.qq.com
+    mobileoc.music.tc.qq.com
+    isure.stream.qqmusic.qq.com
+    dl.stream.qqmusic.qq.com
+    aqqmusic.tc.qq.com
+    amobile.music.tc.qq.com
+    +.xiami.com
+    +.music.migu.cn
+    music.migu.cn
+    live-push.bilivideo.com
+
+    # 16. CDN / 云服务
     +.chinanetcenter.com
     +.ourglu.com
     +.qingcdn.com
@@ -684,53 +749,33 @@
     +.ksyun.com
     +.ksyuncs.com
     +.360tpcdn.com
-    +.mi.com
-    +.xiaomi.com
-    +.market.xiaomi.com
-    +.miui.com
-    +.huawei.com
-    +.vmall.com
-    +.csdn.net
-    +.jianshu.com
-    +.sohu.com
-    +.sogou.com
-    +.cn
-    +.battlenet.com.cn
-    +.wotgame.cn
-    +.wggames.cn
-    +.wowsgame.cn
-    mesu.apple.com
-    swscan.apple.com
-    swquery.apple.com
-    swdownload.apple.com
-    swcdn.apple.com
-    swdist.apple.com
-    lens.l.google.com
-    stun.l.google.com
-    na.b.g-tun.com
-    +.stun.playstation.net
+
+    # 17. 路由器 / 智能家居 / 广告过滤
     heartbeat.belkin.com
-    *.linksys.com
-    *.linksyssmartwifi.com
-    *.router.asus.com
+    +.linksys.com
+    +.linksyssmartwifi.com
+    +.router.asus.com
     local.adguard.org
+    injections.adguard.org
+    app.yinxiang.com
+
+    # 18. 其他
     +.pub.3gppnetwork.org
-    +.uu.163.com
-    ps.res.netease.com
     +.media.dssott.com
     shark007.net
-    +.wilds.monsterhunter.com
-    +.playfabapi.com
-    +.cloudapp.azure.com
-    +.westeurope.cloudapp.azure.com
-    +.vodafone-ip.de
-    mask.icloud.com
-    mask-h2.icloud.com
-    mask.apple-dns.net
     # DDNS/内网穿透（请替换为你的实际DDNS域名）
     # +.ddnsddns.com
     # +.tailscale.com
-    live-push.bilivideo.com
+    
+    # 19. 特定应用及国内域名集（根据系统提示手动固化）
+    rule-set:oc-cn-domain
+    +.services.googleapis.cn
+    +.googleapis.cn
+    +.xn--ngstr-lra8j.com
+    +.adobe.com
+    +.adobelogin.com
+    +.adobe.io
+    +.behance.net
 
 **Hosts 配置（覆盖原有配置）：**
 
